@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>GSIS Pension Calculator Philippines | Estimate Your Retirement</title>
-    <meta name="description" content="An easy-to-use GSIS pension calculator for government employees in the Philippines. Estimate your retirement benefits under R.A. 8291, including lump sum and monthly pension options.">
-    <meta name="keywords" content="GSIS pension calculator, GSIS retirement, retirement calculator Philippines, government employee pension, R.A. 8291, lump sum computation, monthly pension, GSIS Philippines">
+    <title>GSIS Pension & Separation Benefit Calculator Philippines</title>
+    <meta name="description" content="An easy-to-use GSIS calculator for government employees in the Philippines. Estimate your retirement pension (R.A. 8291) or separation benefits for less than 15 years of service.">
+    <meta name="keywords" content="GSIS pension calculator, GSIS separation benefit, GSIS retirement, retirement calculator Philippines, government employee pension, R.A. 8291, lump sum computation, monthly pension, GSIS Philippines">
     <meta name="author" content="GSIS Pension Calculator">
     <link rel="canonical" href="https://your-website-url.com/gsis-pension-calculator"> <!-- Replace with your actual URL -->
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph Meta Tags for Social Media Preview -->
-    <meta property="og:title" content="GSIS Retirement Pension Calculator | Philippines">
-    <meta property="og:description" content="Estimate your retirement benefits under Republic Act No. 8291 with this free and easy-to-use calculator.">
+    <meta property="og:title" content="GSIS Retirement & Separation Benefit Calculator | Philippines">
+    <meta property="og:description" content="Estimate your retirement pension or separation benefits with this free and easy-to-use calculator.">
     <meta property="og:image" content="https://www.dropbox.com/scl/fi/wy7zyb1qf6d88w8xtii3s/gsis.png?rlkey=hyag8ckk5gyq93si65zvf8c7b&raw=1">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://your-website-url.com/gsis-pension-calculator"> <!-- Replace with your actual URL -->
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GSIS Retirement Pension Calculator | Philippines">
-    <meta name="twitter:description" content="Estimate your retirement benefits under R.A. 8291 with this free calculator.">
+    <meta name="twitter:title" content="GSIS Retirement & Separation Benefit Calculator | Philippines">
+    <meta name="twitter:description" content="Estimate your retirement pension or separation benefits with this free calculator.">
     <meta name="twitter:image" content="https://www.dropbox.com/scl/fi/wy7zyb1qf6d88w8xtii3s/gsis.png?rlkey=hyag8ckk5gyq93si65zvf8c7b&raw=1">
 
     <!-- Scripts and Styles -->
@@ -39,11 +39,11 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "GSIS Pension Calculator",
+      "name": "GSIS Pension & Separation Benefit Calculator",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
       "browserRequirements": "Requires HTML5 and JavaScript.",
-      "description": "A free online tool to calculate GSIS retirement pension for government employees in the Philippines based on Republic Act No. 8291.",
+      "description": "A free online tool to calculate GSIS retirement pension or separation benefits for government employees in the Philippines.",
       "offers": {
         "@type": "Offer",
         "price": "0"
@@ -64,15 +64,15 @@
 
     <main class="bg-white p-8 rounded-2xl shadow-lg max-w-2xl w-full">
         <header class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-green-800">GSIS Retirement Pension Calculator</h1>
-            <p class="text-gray-600 mt-2">Estimate your retirement benefits under Republic Act No. 8291.</p>
+            <h1 class="text-3xl font-bold text-green-800">GSIS Pension & Separation Calculator</h1>
+            <p class="text-gray-600 mt-2">Estimate your benefits for retirement or separation from service.</p>
         </header>
 
         <section id="calculator-section">
             <form id="pensionForm" class="space-y-6">
                 <div>
                     <label for="yearsService" class="block text-sm font-medium text-gray-700 mb-1">Years in Government Service</label>
-                    <input type="number" id="yearsService" min="15" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="e.g., 25" required>
+                    <input type="number" id="yearsService" min="3" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="e.g., 10 or 25" required>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div id="retirementOptionDiv">
                     <label for="retirementOption" class="block text-sm font-medium text-gray-700 mb-1">Retirement Option</label>
                     <select id="retirementOption" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
                         <option value="1">Option 1: 5-Year Lump Sum</option>
@@ -95,7 +95,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300 shadow-md">
-                    Calculate Pension
+                    Calculate Benefits
                 </button>
             </form>
         </section>
@@ -103,16 +103,14 @@
         <div id="error" class="mt-6 text-center text-red-600 font-medium"></div>
 
         <section id="results" class="mt-8 border-t-4 border-green-600 bg-green-50 p-6 rounded-b-lg" style="display:none;" aria-live="polite">
-            <h2 class="text-2xl font-bold text-green-800 mb-4">Calculation Results 📝</h2>
+            <h2 id="resultsTitle" class="text-2xl font-bold text-green-800 mb-4"></h2>
             <div class="space-y-3 text-gray-800">
                 <p id="amcResult" class="text-lg"></p>
-                <p id="bmpResult" class="text-lg"></p>
-                <hr class="my-4 border-gray-300">
-                <p id="finalBenefitResult" class="text-lg font-semibold"></p>
+                <p id="mainBenefitResult" class="text-lg"></p>
+                <hr id="resultsHr" class="my-4 border-gray-300">
+                <p id="payoutInfoResult" class="text-lg font-semibold"></p>
             </div>
-             <p class="mt-6 text-xs text-gray-500 text-justify">
-                <strong>Disclaimer:</strong> This computation is an estimate based on R.A. 8291. The final and official computation can only be provided by GSIS upon your formal application. Eligibility requires at least 15 years of service and being at least 60 years of age at retirement (optional) or 65 (compulsory).
-            </p>
+             <p id="disclaimer" class="mt-6 text-xs text-gray-500 text-justify"></p>
         </section>
 
         <!-- Support Us Button Section -->
@@ -160,18 +158,29 @@
                 [438844, 451713]
             ];
 
+            // DOM Elements
             const form = document.getElementById('pensionForm');
+            const yearsServiceInput = document.getElementById('yearsService');
             const sgSelect = document.getElementById('salaryGrade');
             const stepSelect = document.getElementById('step');
+            const retirementOptionDiv = document.getElementById('retirementOptionDiv');
+            
+            // Results Elements
             const resultsDiv = document.getElementById('results');
+            const resultsTitle = document.getElementById('resultsTitle');
             const errorDiv = document.getElementById('error');
             const amcResultP = document.getElementById('amcResult');
-            const bmpResultP = document.getElementById('bmpResult');
-            const finalBenefitResultP = document.getElementById('finalBenefitResult');
+            const mainBenefitResultP = document.getElementById('mainBenefitResult');
+            const resultsHr = document.getElementById('resultsHr');
+            const payoutInfoResultP = document.getElementById('payoutInfoResult');
+            const disclaimerP = document.getElementById('disclaimer');
+
+            // Modal Elements
             const supportUsBtn = document.getElementById('supportUsBtn');
             const supportModal = document.getElementById('supportModal');
             const closeModalBtn = document.getElementById('closeModalBtn');
 
+            // Populate Salary Grade dropdown
             for (let i = 1; i <= 33; i++) {
                 const option = document.createElement('option');
                 option.value = i;
@@ -195,43 +204,75 @@
             populateSteps(sgSelect.value);
             sgSelect.addEventListener('change', (e) => populateSteps(e.target.value));
 
+            // Show/hide retirement options based on years of service
+            yearsServiceInput.addEventListener('input', (e) => {
+                const years = parseInt(e.target.value, 10);
+                if (years < 15) {
+                    retirementOptionDiv.style.display = 'none';
+                } else {
+                    retirementOptionDiv.style.display = 'block';
+                }
+            });
+
+            // Form submission handler
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 resultsDiv.style.display = 'none';
                 errorDiv.textContent = '';
                 
-                const years = parseInt(document.getElementById('yearsService').value, 10);
+                const years = parseInt(yearsServiceInput.value, 10);
                 const grade = parseInt(sgSelect.value, 10);
                 const step = parseInt(stepSelect.value, 10);
-                const option = document.getElementById('retirementOption').value;
+                const retirementOption = document.getElementById('retirementOption').value;
 
-                if (isNaN(years) || years < 15) {
-                    errorDiv.textContent = 'Eligibility requires at least 15 years of service.';
+                if (isNaN(years) || years < 3) {
+                    errorDiv.textContent = 'A minimum of 3 years of service is required.';
                     return;
                 }
 
-                const amc = salaryData[grade - 1][step - 1];
-                const bmpRaw = 0.025 * amc * years;
-                const bmpCap = 0.90 * amc;
-                const finalBmp = Math.min(bmpRaw, bmpCap);
                 const formatCurrency = (num) => new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(num);
-                
+                const amc = salaryData[grade - 1][step - 1];
                 amcResultP.innerHTML = `Average Monthly Compensation (AMC): <strong class="text-green-900">${formatCurrency(amc)}</strong>`;
-                bmpResultP.innerHTML = `Basic Monthly Pension (BMP): <strong class="text-green-900">${formatCurrency(finalBmp)}</strong>`;
-                
-                let benefitText = '';
-                if (option === '1') {
-                    const lumpSum = finalBmp * 60;
-                    benefitText = `You will receive a <strong>5-Year Lump Sum</strong> of <strong class="text-green-700">${formatCurrency(lumpSum)}</strong>. After 5 years, your lifetime monthly pension of ${formatCurrency(finalBmp)} will begin.`;
+
+                if (years < 15) {
+                    // --- Separation Benefit Calculation ---
+                    resultsTitle.textContent = 'Separation Benefit Calculation';
+                    const separationBenefit = amc * years;
+                    
+                    mainBenefitResultP.innerHTML = `Total Separation Benefit: <strong class="text-green-900">${formatCurrency(separationBenefit)}</strong>`;
+                    payoutInfoResultP.innerHTML = `<strong>Payout Information:</strong> This cash benefit is payable upon reaching age 60. If you are already 60 or older at separation, it is payable immediately.`;
+                    
+                    // Configure visibility for separation results
+                    resultsHr.style.display = 'none';
+                    disclaimerP.style.display = 'none';
+
                 } else {
-                    const cashPayment = finalBmp * 18;
-                    benefitText = `You will receive an <strong>18-Month Cash Payment</strong> of <strong class="text-green-700">${formatCurrency(cashPayment)}</strong> and immediately start receiving your lifetime monthly pension of ${formatCurrency(finalBmp)}.`;
+                    // --- Retirement Pension Calculation ---
+                    resultsTitle.textContent = 'Retirement Pension Calculation �';
+                    const bmpRaw = 0.025 * amc * years;
+                    const bmpCap = 0.90 * amc;
+                    const finalBmp = Math.min(bmpRaw, bmpCap);
+                    
+                    mainBenefitResultP.innerHTML = `Basic Monthly Pension (BMP): <strong class="text-green-900">${formatCurrency(finalBmp)}</strong>`;
+
+                    if (retirementOption === '1') {
+                        const lumpSum = finalBmp * 60;
+                        payoutInfoResultP.innerHTML = `You will receive a <strong>5-Year Lump Sum</strong> of <strong class="text-green-700">${formatCurrency(lumpSum)}</strong>. After 5 years, your lifetime monthly pension of ${formatCurrency(finalBmp)} will begin.`;
+                    } else {
+                        const cashPayment = finalBmp * 18;
+                        payoutInfoResultP.innerHTML = `You will receive an <strong>18-Month Cash Payment</strong> of <strong class="text-green-700">${formatCurrency(cashPayment)}</strong> and immediately start receiving your lifetime monthly pension of ${formatCurrency(finalBmp)}.`;
+                    }
+                    
+                    // Configure visibility for retirement results
+                    resultsHr.style.display = 'block';
+                    disclaimerP.style.display = 'block';
+                    disclaimerP.innerHTML = `<strong>Disclaimer:</strong> This computation is an estimate based on R.A. 8291. The final and official computation can only be provided by GSIS upon your formal application. Eligibility requires at least 15 years of service and being at least 60 years of age at retirement (optional) or 65 (compulsory).`;
                 }
                 
-                finalBenefitResultP.innerHTML = benefitText;
                 resultsDiv.style.display = 'block';
             });
 
+            // --- Sound and Modal Logic ---
             const synth = new Tone.Synth().toDestination();
             function playCoinSound() {
                 const now = Tone.now();
@@ -249,10 +290,10 @@
             };
 
             supportUsBtn.addEventListener('click', () => {
-                if (typeof Tone !== 'undefined') {
+                if (typeof Tone !== 'undefined' && Tone.context.state !== 'running') {
                     Tone.start();
-                    playCoinSound();
                 }
+                playCoinSound();
                 showModal();
             });
             closeModalBtn.addEventListener('click', hideModal);
@@ -266,3 +307,4 @@
 
 </body>
 </html>
+�
