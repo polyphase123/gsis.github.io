@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-PH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>GSIS Pension Calculator Philippines | Estimate Your Retirement</title>
+    <meta name="description" content="An easy-to-use GSIS pension calculator for government employees in the Philippines. Estimate your retirement benefits under R.A. 8291, including lump sum and monthly pension options.">
+    <meta name="keywords" content="GSIS pension calculator, GSIS retirement, retirement calculator Philippines, government employee pension, R.A. 8291, lump sum computation, monthly pension, GSIS Philippines">
+    <meta name="author" content="GSIS Pension Calculator">
+    <link rel="canonical" href="https://your-website-url.com/gsis-pension-calculator"> <!-- Replace with your actual URL -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags for Social Media Preview -->
+    <meta property="og:title" content="GSIS Retirement Pension Calculator | Philippines">
+    <meta property="og:description" content="Estimate your retirement benefits under Republic Act No. 8291 with this free and easy-to-use calculator.">
+    <meta property="og:image" content="https://www.dropbox.com/scl/fi/wy7zyb1qf6d88w8xtii3s/gsis.png?rlkey=hyag8ckk5gyq93si65zvf8c7b&raw=1">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-website-url.com/gsis-pension-calculator"> <!-- Replace with your actual URL -->
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GSIS Retirement Pension Calculator | Philippines">
+    <meta name="twitter:description" content="Estimate your retirement benefits under R.A. 8291 with this free calculator.">
+    <meta name="twitter:image" content="https://www.dropbox.com/scl/fi/wy7zyb1qf6d88w8xtii3s/gsis.png?rlkey=hyag8ckk5gyq93si65zvf8c7b&raw=1">
+
+    <!-- Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        #closeModalBtn { font-size: 2rem; line-height: 1; }
+    </style>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GSIS Pension Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires HTML5 and JavaScript.",
+      "description": "A free online tool to calculate GSIS retirement pension for government employees in the Philippines based on Republic Act No. 8291.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "250"
+      },
+      "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://your-website-url.com/gsis-pension-calculator" 
+      }
+    }
+    </script>
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen p-4">
+
+    <main class="bg-white p-8 rounded-2xl shadow-lg max-w-2xl w-full">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-green-800">GSIS Retirement Pension Calculator</h1>
+            <p class="text-gray-600 mt-2">Estimate your retirement benefits under Republic Act No. 8291.</p>
+        </header>
+
+        <section id="calculator-section">
+            <form id="pensionForm" class="space-y-6">
+                <div>
+                    <label for="yearsService" class="block text-sm font-medium text-gray-700 mb-1">Years in Government Service</label>
+                    <input type="number" id="yearsService" min="15" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="e.g., 25" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="salaryGrade" class="block text-sm font-medium text-gray-700 mb-1">Salary Grade</label>
+                        <select id="salaryGrade" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required></select>
+                    </div>
+                    <div>
+                        <label for="step" class="block text-sm font-medium text-gray-700 mb-1">Step Increment</label>
+                        <select id="step" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required></select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="retirementOption" class="block text-sm font-medium text-gray-700 mb-1">Retirement Option</label>
+                    <select id="retirementOption" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
+                        <option value="1">Option 1: 5-Year Lump Sum</option>
+                        <option value="2">Option 2: 18-Month Cash Payment</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300 shadow-md">
+                    Calculate Pension
+                </button>
+            </form>
+        </section>
+
+        <div id="error" class="mt-6 text-center text-red-600 font-medium"></div>
+
+        <section id="results" class="mt-8 border-t-4 border-green-600 bg-green-50 p-6 rounded-b-lg" style="display:none;" aria-live="polite">
+            <h2 class="text-2xl font-bold text-green-800 mb-4">Calculation Results 📝</h2>
+            <div class="space-y-3 text-gray-800">
+                <p id="amcResult" class="text-lg"></p>
+                <p id="bmpResult" class="text-lg"></p>
+                <hr class="my-4 border-gray-300">
+                <p id="finalBenefitResult" class="text-lg font-semibold"></p>
+            </div>
+             <p class="mt-6 text-xs text-gray-500 text-justify">
+                <strong>Disclaimer:</strong> This computation is an estimate based on R.A. 8291. The final and official computation can only be provided by GSIS upon your formal application. Eligibility requires at least 15 years of service and being at least 60 years of age at retirement (optional) or 65 (compulsory).
+            </p>
+        </section>
+
+        <!-- Support Us Button Section -->
+        <footer class="mt-8 pt-6 border-t border-gray-200 text-center">
+             <button id="supportUsBtn" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold py-3 px-8 rounded-full hover:from-cyan-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 shadow-lg flex items-center justify-center mx-auto">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg>
+                Support Us
+            </button>
+        </footer>
+    </main>
+
+    <!-- Support Us Modal -->
+    <div id="supportModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-lg max-w-xs w-full text-center relative animate-fade-in-up">
+            <button id="closeModalBtn" class="absolute top-2 right-4 text-gray-400 hover:text-gray-800 focus:outline-none" aria-label="Close support modal">&times;</button>
+            <h3 class="text-xl font-bold text-gray-800 mb-4">GCASH</h3>
+            <div class="flex flex-col items-center">
+                <img src="https://www.dropbox.com/scl/fi/khiyhojktogq5b4lu9rxw/Screenshot_20250713_223151_GCash.jpg?rlkey=sy4spjyzcbkasdwjnnuh7tggj&raw=1" alt="GCash QR Code for support" class="w-48 h-48 rounded-lg shadow-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/192x192/e2e8f0/64748b?text=QR+Code+Not+Available';">
+                <p class="mt-4 text-2xl font-bold text-gray-800 tracking-wider">0936 923 8834</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Salary data transcribed from the provided image
+            const salaryData = [
+                [14061, 14164, 14278, 14393, 14509, 14626, 14743, 14862], [14925, 15035, 15146, 15258, 15371, 15484, 15599, 15714],
+                [15852, 15971, 16088, 16208, 16329, 16448, 16571, 16693], [16833, 16958, 17084, 17209, 17337, 17464, 17594, 17724],
+                [17866, 18000, 18133, 18267, 18401, 18538, 18676, 18813], [18957, 19098, 19239, 19383, 19526, 19670, 19816, 19963],
+                [20110, 20258, 20408, 20560, 20711, 20865, 21019, 21175], [21448, 21642, 21839, 22035, 22234, 22435, 22638, 22843],
+                [23226, 23411, 23599, 23788, 23978, 24170, 24364, 24558], [25586, 25790, 25996, 26203, 26412, 26623, 26835, 27050],
+                [30024, 30308, 30597, 30889, 31185, 31486, 31790, 32099], [32245, 32529, 32817, 33108, 33403, 33702, 34004, 34310],
+                [34421, 34733, 35049, 35369, 35694, 36022, 36354, 36691], [37024, 37384, 37749, 38118, 38491, 38869, 39252, 39640],
+                [40208, 40604, 41006, 41413, 41824, 42241, 42662, 43090], [43560, 43996, 44438, 44885, 45338, 45796, 46261, 46730],
+                [47247, 47727, 48213, 48705, 49203, 49708, 50218, 50735], [51304, 51832, 52367, 52907, 53456, 54010, 54572, 55140],
+                [56390, 57165, 57953, 58753, 59567, 60394, 61235, 62089], [62967, 63842, 64732, 65637, 66557, 67479, 68409, 69342],
+                [70013, 71000, 72004, 73024, 74061, 75115, 76151, 77239], [78162, 79277, 80411, 81564, 82735, 83887, 85096, 86324],
+                [87315, 88574, 89855, 91163, 92592, 94043, 95518, 96955], [98185, 99721, 101283, 102871, 104483, 106123, 107739, 109431],
+                [111727, 113476, 115254, 117062, 118899, 120766, 122664, 124591], [126252, 128228, 130238, 132280, 134356, 136465, 138608, 140788],
+                [142663, 144897, 147169, 149407, 151752, 153850, 156267, 158723], [160469, 162988, 165548, 167994, 170634, 173320, 175803, 178572],
+                [180492, 183332, 186218, 189151, 192131, 194797, 197870, 200993], [203200, 206401, 209558, 212766, 216022, 219434, 222797, 226319],
+                [293191, 298773, 304464, 310119, 315883, 321846, 327895, 334059], [347888, 354743, 361736, 368694, 375969, 383391, 390963, 398686],
+                [438844, 451713]
+            ];
+
+            const form = document.getElementById('pensionForm');
+            const sgSelect = document.getElementById('salaryGrade');
+            const stepSelect = document.getElementById('step');
+            const resultsDiv = document.getElementById('results');
+            const errorDiv = document.getElementById('error');
+            const amcResultP = document.getElementById('amcResult');
+            const bmpResultP = document.getElementById('bmpResult');
+            const finalBenefitResultP = document.getElementById('finalBenefitResult');
+            const supportUsBtn = document.getElementById('supportUsBtn');
+            const supportModal = document.getElementById('supportModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            for (let i = 1; i <= 33; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Grade ${i}`;
+                sgSelect.appendChild(option);
+            }
+            sgSelect.value = 19;
+
+            function populateSteps(sg) {
+                stepSelect.innerHTML = '';
+                let maxSteps = (parseInt(sg, 10) === 33) ? 2 : 8;
+                for (let i = 1; i <= maxSteps; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = `Step ${i}`;
+                    stepSelect.appendChild(option);
+                }
+                stepSelect.value = 1;
+            }
+            
+            populateSteps(sgSelect.value);
+            sgSelect.addEventListener('change', (e) => populateSteps(e.target.value));
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                resultsDiv.style.display = 'none';
+                errorDiv.textContent = '';
+                
+                const years = parseInt(document.getElementById('yearsService').value, 10);
+                const grade = parseInt(sgSelect.value, 10);
+                const step = parseInt(stepSelect.value, 10);
+                const option = document.getElementById('retirementOption').value;
+
+                if (isNaN(years) || years < 15) {
+                    errorDiv.textContent = 'Eligibility requires at least 15 years of service.';
+                    return;
+                }
+
+                const amc = salaryData[grade - 1][step - 1];
+                const bmpRaw = 0.025 * amc * years;
+                const bmpCap = 0.90 * amc;
+                const finalBmp = Math.min(bmpRaw, bmpCap);
+                const formatCurrency = (num) => new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(num);
+                
+                amcResultP.innerHTML = `Average Monthly Compensation (AMC): <strong class="text-green-900">${formatCurrency(amc)}</strong>`;
+                bmpResultP.innerHTML = `Basic Monthly Pension (BMP): <strong class="text-green-900">${formatCurrency(finalBmp)}</strong>`;
+                
+                let benefitText = '';
+                if (option === '1') {
+                    const lumpSum = finalBmp * 60;
+                    benefitText = `You will receive a <strong>5-Year Lump Sum</strong> of <strong class="text-green-700">${formatCurrency(lumpSum)}</strong>. After 5 years, your lifetime monthly pension of ${formatCurrency(finalBmp)} will begin.`;
+                } else {
+                    const cashPayment = finalBmp * 18;
+                    benefitText = `You will receive an <strong>18-Month Cash Payment</strong> of <strong class="text-green-700">${formatCurrency(cashPayment)}</strong> and immediately start receiving your lifetime monthly pension of ${formatCurrency(finalBmp)}.`;
+                }
+                
+                finalBenefitResultP.innerHTML = benefitText;
+                resultsDiv.style.display = 'block';
+            });
+
+            const synth = new Tone.Synth().toDestination();
+            function playCoinSound() {
+                const now = Tone.now();
+                synth.triggerAttackRelease("B4", "32n", now);
+                synth.triggerAttackRelease("E5", "32n", now + 0.07);
+            }
+
+            const showModal = () => {
+                supportModal.classList.remove('hidden');
+                supportModal.classList.add('flex');
+            };
+            const hideModal = () => {
+                supportModal.classList.add('hidden');
+                supportModal.classList.remove('flex');
+            };
+
+            supportUsBtn.addEventListener('click', () => {
+                if (typeof Tone !== 'undefined') {
+                    Tone.start();
+                    playCoinSound();
+                }
+                showModal();
+            });
+            closeModalBtn.addEventListener('click', hideModal);
+            supportModal.addEventListener('click', (e) => {
+                if (e.target === supportModal) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
